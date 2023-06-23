@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - ECR_URI=933988069619.dkr.ecr.us-west-2.amazonaws.com/app-was
+      - IMAGE_TAG=latest
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $ECR_URI
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t app-was .
+      - docker tag app-was:latest $ECR_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Pushing the Docker image...
+      - docker push $ECR_URI:latest
+      - printf '[{"name":"app-was","imageUri":"%s"}]' $ECR_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json

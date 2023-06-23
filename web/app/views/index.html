@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flower Classifier</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+<!--    <link rel="stylesheet" href="cloud.css">-->
+
+  </head>
+
+  <button id="button-for-was-check" style="position:absolute; top: 15px; left: 15px; z-index: 1;">
+    WAS 접속 확인 페이지
+  </button>
+
+  <body class="flower-site has-navbar-fixed-bottom">
+
+    <section class="flower-section section">
+      <div class="container">
+
+        <!-- Title -->
+        <div class="column is-half is-offset-one-quarter" style="padding:0.0rem 0.75rem 0.75rem 0.75rem;">
+          <div id="wrapper" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+              <span class="flower-title-text">Flower Classifier</span>
+          </div>
+        </div>
+
+        <!-- Pokemon Image -->
+        <div class="column is-half is-offset-one-quarter">
+          <!-- <figure class="image is-4by3">
+            <img id="flower-image" class="flower-image" src="/pokemon-pikachu-01.png">
+          </figure> -->
+          <!-- <figure class="image is-4by3"> -->
+            <div id="flower-emoji" class="flower-emoji" >🌸</div>
+          <!-- </figure> -->
+        </div>
+
+        <!-- flower Description -->
+        <div class="column is-half is-offset-one-quarter">
+          <article class="message is-dark is-medium">
+            <div id="flower-name" class="message-header" style="display:block; text-align:center;">
+              <p> [ 식물 도감 ]</p>
+            </div>
+            <div id="flower-desc" class="message-body">
+              어떤 식물이 궁금하신가요? 사진을 올려주세요!
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Preview -->
+    <nav id="flower-preview-nav" class="flower-preview-nav container" role="navigation">
+      <div class="flower-preview column is-half is-offset-one-quarter">
+        <span id="flower-preview-close" class="flower-preview-close icon is-medium">
+          <i class="fas fa-close fa-lg"></i>
+        </span>
+        <figure class="image is-3by1">
+            <img id="flower-preview-image" class="flower-image" style="visibility: hidden;">
+        </figure>
+      </div>
+    </nav>
+
+    
+    <!-- Image select -->
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box" style="background: transparent">
+
+          <nav class="panel column " style="background-color: white; text-align: center;">
+
+            <!-- Take with camera -->
+            <p style="text-align: center">
+              <a class="panel-block" style="font-size: 1.3rem; margin-bottom: 2px;">
+                <span class="panel-icon is-large">
+                  <i class="fas fa-camera fa-lg" aria-hidden="true"></i>
+                </span>
+                <label class="file-label" style="width: 100%;">
+                  <input id="flower-input-image" class="file-input" type="file" capture="environment" accept="image/*">
+                  카메라로 촬영
+                </label>
+              </a>
+            </p>
+
+            <!-- Select from album -->
+            <a class="panel-block" style="font-size: 1.3rem; margin-top: 2px;">
+              <span class="panel-icon is-large">
+                <i class="fas fa-image fa-lg" aria-hidden="true"></i>
+              </span>
+              <label class="file-label" style="width: 100%;">
+                <input id="flower-input-album-image" class="file-input" type="file" accept="image/*">
+                앨범에서 선택
+              </label>
+            </a>
+          </nav>
+
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="flower-navbar container" role="navigation">
+
+      <div class="flower-navbar-field field has-addons column is-half is-offset-one-quarter">
+
+        <!-- Input Image -->
+        <div class="flower-input-image-wrapper file is-danger is-centered is-medium">
+          <label class="file-label">
+            <span class="flower-file-cta file-cta js-modal-trigger"  data-target="modal-js-example">
+                <i class="fas fa-camera"></i>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <!-- <div class="control"> -->
+          <!-- <button id="flower-send" class="button is-fullwidth">Normal</button> -->
+          <button id="flower-send" class="button is-warning is-medium is-fullwidth">
+          <span class="icon is-small">
+              <i class="fas fa-magnifying-glass"></i>
+              </span>
+          </button>
+
+        <!-- </div> -->
+      </div>
+
+    </nav>
+
+  </body>
+
+  <script type="text/javascript" src="jquery-3.6.3.min.js"></script>
+  <script src="inference.js"></script>
+  <script src="modal-controller.js"></script>
+
+  <script>
+    document.getElementById("button-for-was-check").onclick = function () {
+        location.href = "/was/check";
+    };
+  </script>
+
+</html>

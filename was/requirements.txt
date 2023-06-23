@@ -1,0 +1,8 @@
+fastapi~=0.89.1
+pydantic>=1.8.0,<2.0.0
+uvicorn>=0.15.0,<0.16.0
+python-multipart
+tensorflow==2.11.0
+gunicorn
+boto3
+pillow

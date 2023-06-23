@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flower Classifier - Check WAS Connection</title>
+
+  </head>
+
+  <body class="flower-site has-navbar-fixed-bottom">
+      <input  id="input-for-was-check" type="text" name="name" style="width:600px"><br>
+      <button id="button-for-was-check">
+        WAS 접속 확인
+      </button>
+  </body>
+
+  <script>
+    document.getElementById("button-for-was-check").onclick = function () {
+        url = document.getElementById('input-for-was-check').value
+        url = url.replace(/(^\w+:|^)\/\//, '');
+        location.href = "/was/health/" + url;
+    };
+  </script>
+
+</html>

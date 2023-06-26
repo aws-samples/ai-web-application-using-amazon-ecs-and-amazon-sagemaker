@@ -15,7 +15,7 @@
 Cloud9 용량을 확장합니다.
 
 ```java
-wget https://raw.githubusercontent.com/kyopark2014/technical-summary/main/resize.sh
+wget https://raw.githubusercontent.com/aws-samples/ai-web-application-using-amazon-ecs-and-amazon-sagemaker/main/cdk-ai-wep-application/resize.sh
 chmod a+rx resize.sh
 ./resize.sh 100
 ```
